@@ -14,6 +14,14 @@ const upload = multer({
     },
 });
 
+// update only part of entity instead of all
+router.patch(
+    "/order/:orderId/status",
+    jwtCheck,
+    jwtParse,
+    MyRestaurantController.updateOrderStatus
+);
+
 // /api/my/restaurant
 router.post(
     "/",
@@ -24,7 +32,19 @@ router.post(
     MyRestaurantController.createMyRestaurant
 );
 
-router.get("/", jwtCheck, jwtParse, MyRestaurantController.getMyRestaurant);
+router.get(
+    "/order",
+    jwtCheck, jwtParse,
+    MyRestaurantController.getMyRestaurantOrders
+);
+
+router.get(
+    "/",
+    jwtCheck,
+    jwtParse,
+    MyRestaurantController.getMyRestaurant
+);
+
 router.put(
     "/",
     upload.single("imageFile"),
@@ -33,5 +53,7 @@ router.put(
     jwtParse,
     MyRestaurantController.updateMyRestaurant
 );
+
+
 
 export default router;

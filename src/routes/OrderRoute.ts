@@ -16,5 +16,12 @@ router.post(
     OrderController.stripeWebhookHandler
 );
 
+router.get(
+    "/",
+    jwtCheck,
+    jwtParse,
+    OrderController.getMyOrders
+);
+
 
 export default router;
