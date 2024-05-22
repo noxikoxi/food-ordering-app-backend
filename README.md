@@ -1,5 +1,3 @@
-### Work in progress
-
 ## Backed for food ordering platform
 
 Uses: ExpressJS, Node.js, MongoDB, Auth0
